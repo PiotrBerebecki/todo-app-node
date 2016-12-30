@@ -23,4 +23,7 @@ mongod
 
 # 2. b) If environmental variable for mongod exists you can start the server by running
 mongod --dbpath C:/Users/USERNAME/Desktop/todo-app-node/mongo-data
+
+3. Connect to database (in Windows use Command Prompts and backslashes)
+mongodb playground/mongodb-connect.js
 ```

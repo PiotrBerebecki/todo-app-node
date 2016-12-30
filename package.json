@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/PiotrBerebecki/todo-app-node/issues"
   },
-  "homepage": "https://github.com/PiotrBerebecki/todo-app-node#readme"
+  "homepage": "https://github.com/PiotrBerebecki/todo-app-node#readme",
+  "dependencies": {
+    "mongodb": "^2.2.5"
+  }
 }
