@@ -15,12 +15,12 @@ npm install
 # 1. Create folder for database
 mkdir mongo-data
 
-# 2. a) Start the server by running
+# 2. a) In Mac / Linux you can start the server simply by running
+mongod
+
+# 2. a) In Windows start the server by running
 "C:/Program Files/MongoDB/Server/3.2/bin/mongod.exe" --dbpath C:/Users/USERNAME/Desktop/todo-app-node/mongo-data
 
 # 2. b) If environmental variable for mongod exists you can start the server by running
 mongod --dbpath C:/Users/USERNAME/Desktop/todo-app-node/mongo-data
-
-# 2. c) In Mac / Linux you can start the server simply by running
-mongod
 ```
