@@ -1,4 +1,9 @@
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient, ObjectID } = require('mongodb');
+
+// ObjectID function can be used to generate
+// unique IDs
+// var obj = new ObjectID();
+// console.log(obj);
 
 // In production example the first link could
 // for example be AWS or Heroku url
@@ -24,17 +29,17 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   // });
   
   
-  db.collection('Users').insertOne({
-    name: 'Pete',
-    age: 25,
-    location: 'Bangkok'
-  }, (err, result) => {
-    if (err) {
-      return console.log('Unable to insert user', err);
-    }
+  // db.collection('Users').insertOne({
+  //   name: 'Pete3',
+  //   age: 25,
+  //   location: 'Bangkok'
+  // }, (err, result) => {
+  //   if (err) {
+  //     return console.log('Unable to insert user', err);
+  //   }
     
-    console.log(JSON.stringify(result.ops, undefined, 2));
-  });
+  //   console.log(result.ops[0]._id.getTimestamp());
+  // });
   
   db.close();
 });
