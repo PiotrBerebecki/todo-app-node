@@ -15,7 +15,7 @@ npm install
 # 1. Create folder for database
 mkdir mongo-data
 
-# 2. a) In Mac / Linux you can start the server simply by running
+# 2. a) In Mac / Linux you can start the MongoDB server simply by running
 mongod
 
 # 2. a) In Windows start the server by running
