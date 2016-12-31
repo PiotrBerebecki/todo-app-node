@@ -4,6 +4,7 @@
 * Node
 * MongoDB
 * MongoDB Node.js driver (node-mongodb-native)
+* Mongoose
 
 ## Getting started
 
