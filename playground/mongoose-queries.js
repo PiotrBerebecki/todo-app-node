@@ -9,7 +9,7 @@ if (!ObjectID.isValid(id)) {
   console.log('Id not valid');
 }
 
-// mongoose can query based on id string
+// Mongoose can query based on id string
 // so no need to use an object constructor
 Todo.find({
   _id: id

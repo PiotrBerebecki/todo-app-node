@@ -10,7 +10,7 @@ var { User } = require('./models/user');
 var app = express();
 const port = process.env.PORT || 3000;
 
-// Thanks to this we can send json to our Express app
+// thanks to this we can send json to our Express app
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
@@ -33,9 +33,9 @@ app.post('/todos', (req, res) => {
 app.get('/todos', (req, res) => {
   Todo.find().then(todos => {
     
-    // don't do: res.send(todos) as you will get an array
-    // and you can attach any additional data if you want
-    // instad create an object
+    // Don't do: res.send(todos) as you will get an array
+    // and you can't attach any additional data if you want.
+    // Instead create an object
     res.send({todos});
   }, err => {
     res.status(400).send(err);
@@ -49,7 +49,7 @@ app.get('/todos/:id', (req, res) => {
   
   if (!ObjectID.isValid(id)) {
     return res.status(404).send();
-  }
+  }a
   
   Todo.findById(id).then(todo => {
     if (!todo) {
@@ -62,7 +62,25 @@ app.get('/todos/:id', (req, res) => {
 });
 
 
-// If having problems when testing server with supertest:
+
+app.delete('/todos/:id', (req, res) => {
+  var id = req.params.id;
+  
+  if(!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+  
+  Todo.findByIdAndRemove(id).then(todo => {
+    if (!todo) {
+      return res.status(404).send();
+    }
+    
+    res.send(todo);
+  }).catch(err => res.status(400).send());
+});
+
+
+// if having problems when testing server with supertest:
 // http://www.marcusoft.net/2015/10/eaddrinuse-when-watching-tests-with-mocha-and-supertest.html
 if (!module.parent) {
   app.listen(port, () => {
