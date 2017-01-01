@@ -27,6 +27,20 @@ app.post('/todos', (req, res) => {
   
 });
 
+
+app.get('/todos', (req, res) => {
+  Todo.find().then(todos => {
+    
+    // don't do: res.send(todos) as you will get an array
+    // and you can attach any additional data if you want
+    // instad create an object
+    res.send({todos});
+  }, err => {
+    res.status(400).send(err);
+  });
+});
+
+
 app.listen(3000, () => {
   console.log('Listening on port 3000');
 });
