@@ -8,6 +8,7 @@ var { User } = require('./models/user');
 
 
 var app = express();
+const port = process.env.PORT || 3000;
 
 // Thanks to this we can send json to our Express app
 app.use(bodyParser.json());
@@ -64,13 +65,13 @@ app.get('/todos/:id', (req, res) => {
 // If having problems when testing server with supertest:
 // http://www.marcusoft.net/2015/10/eaddrinuse-when-watching-tests-with-mocha-and-supertest.html
 if (!module.parent) {
-  app.listen(3000, () => {
-    console.log('Listening on port 3000');
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
   });
 }
 
-// app.listen(3000, () => {
-//   console.log('Listening on port 3000');
+// app.listen(port, () => {
+//   console.log(`Listening on port ${port}`);
 // });
 
 module.exports = {app};
