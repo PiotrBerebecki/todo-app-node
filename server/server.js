@@ -61,8 +61,16 @@ app.get('/todos/:id', (req, res) => {
 });
 
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
-});
+// If having problems when testing server with supertest:
+// http://www.marcusoft.net/2015/10/eaddrinuse-when-watching-tests-with-mocha-and-supertest.html
+if (!module.parent) {
+  app.listen(3000, () => {
+    console.log('Listening on port 3000');
+  });
+}
+
+// app.listen(3000, () => {
+//   console.log('Listening on port 3000');
+// });
 
 module.exports = {app};
