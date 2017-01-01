@@ -1,10 +1,14 @@
 # Todo App - Node
 
+Rest API todo app
+
 ## Tech stack
 * Node
 * MongoDB
 * MongoDB Node.js driver (node-mongodb-native)
 * Mongoose
+* Express
+* body-parser - Node.js body parsing middleware
 
 ## Getting started
 

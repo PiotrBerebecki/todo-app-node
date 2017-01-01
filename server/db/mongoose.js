@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // mongoose moves on to the following lines
-// only after connecting
+// only after resoling connection on the next line
 mongoose.connect('mongodb://localhost:27017/TodoApp');
 
 module.exports = {mongoose};

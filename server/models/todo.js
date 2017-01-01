@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 // Mongoos will automatically pluralise and lowercase it to 'todos'
 var Todo = mongoose.model('Todo', {
   text: { type: String, required: true, minlength: 1, trim: true },
-  completed: { type: Boolean, default: false  },
+  completed: { type: Boolean, default: false },
   completedAt: { type: Number, default: null }
 });
 
