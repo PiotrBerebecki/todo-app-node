@@ -1,5 +1,8 @@
 # Todo App - Node
 
+Fetch all todos in json format: https://afternoon-plateau-33516.herokuapp.com/todos
+Fetch one todo in json format based on id: https://afternoon-plateau-33516.herokuapp.com/todos/5869264558f9aa0011de8c84
+
 Rest API todo app
 
 ## Tech stack
