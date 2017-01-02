@@ -43,7 +43,6 @@ describe('POST /todos', () => {
         
         // check in the actual database
         Todo.find({text}).then(todos => {
-          console.log('todos', todos);
           expect(todos.length).toBe(1);
           expect(todos[0].text).toBe(text);
           done();

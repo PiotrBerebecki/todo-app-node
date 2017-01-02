@@ -108,16 +108,9 @@ app.patch('/todos/:id', (req, res) => {
 });
 
 
-// if having problems when testing server with supertest:
-// http://www.marcusoft.net/2015/10/eaddrinuse-when-watching-tests-with-mocha-and-supertest.html
-if (!module.parent) {
-  app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-  });
-}
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
 
-// app.listen(port, () => {
-//   console.log(`Listening on port ${port}`);
-// });
 
 module.exports = {app};

@@ -9,8 +9,8 @@ Rest API todo app
 * Mongoose
 * Express
 * body-parser - Node.js body parsing middleware
-* Robomongo
 * Postman
+* Robomongo
 
 ## Getting started
 
@@ -35,4 +35,6 @@ mongod --dbpath C:/Users/USERNAME/Desktop/todo-app-node/mongo-data
 npm start
 # or
 node server/server.js
+
+4. You can interact with the database using Postman
 ```
