@@ -19,6 +19,6 @@ const { User } = require('./../server/models/user');
 //   console.log(todo);
 // });
 
-Todo.findByIdAndRemove('586990c2391c678d18953b38').then(todo => {
-  console.log(todo);
-});
+// Todo.findByIdAndRemove('586990c2391c678d18953b38').then(todo => {
+//   console.log(todo);
+// });
