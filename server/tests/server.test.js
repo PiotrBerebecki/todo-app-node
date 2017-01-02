@@ -6,10 +6,14 @@ const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
 
 
-// Add some seed data for tests
+// Add some seed data for tests, default completed is false
 const todosExample = [
-  {_id: new ObjectID(), text: 'First test todo'},
-  {_id: new ObjectID(), text: 'Second test todo'}
+  {_id: new ObjectID(), 
+   text: 'First test todo'},
+  {_id: new ObjectID(), 
+    text: 'Second test todo', 
+    completed: true, 
+    completedAd: 333}
 ];
 
 
@@ -131,7 +135,7 @@ describe('DELETE /todos/:id', () => {
         }
         
         Todo.findById(idToDelete).then(todo => {
-          expect(todo).toNotExist(null);
+          expect(todo).toNotExist();
           done();
         }).catch(err => done(err));
       });
@@ -155,4 +159,41 @@ describe('DELETE /todos/:id', () => {
       .end(done);
   });
   
+});
+
+
+describe('PATCH /todos/:id', () => {
+  
+  it('update completed status to true', done => {
+    var idToUpdate = todosExample[0]._id.toHexString();
+    
+    request(app)
+      .patch(`/todos/${idToUpdate}`)
+      .send({completed: true, text: 'Updated text'})
+      .expect(200)
+      .expect(res => {
+        expect(res.body.todo.completed).toBe(true);
+        expect(res.body.todo.text).toBe('Updated text');
+        expect(res.body.todo.completedAt).toBeA('number');
+      })
+      .end(done);
+  });
+  
+  
+  it('update completed status to false', done => {
+    var idToUpdate = todosExample[1]._id.toHexString();
+    
+    request(app)
+      .patch(`/todos/${idToUpdate}`)
+      .send({completed: false, text: 'Updated text'})
+      .expect(200)
+      .expect(res => {
+        expect(res.body.todo.completed).toBe(false);
+        expect(res.body.todo.text).toBe('Updated text');
+        expect(res.body.todo.completedAt).toNotExist();
+      })
+      .end(done);
+  });
+  
+
 });

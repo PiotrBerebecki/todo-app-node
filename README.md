@@ -9,6 +9,8 @@ Rest API todo app
 * Mongoose
 * Express
 * body-parser - Node.js body parsing middleware
+* Robomongo
+* Postman
 
 ## Getting started
 
@@ -29,6 +31,8 @@ mongod
 # 2. b) If environmental variable for mongod exists you can start the server by running
 mongod --dbpath C:/Users/USERNAME/Desktop/todo-app-node/mongo-data
 
-3. Connect to database (in Windows use Command Prompts and backslashes)
-mongodb playground/mongodb-connect.js
+3. Start the localhost server
+npm start
+# or
+node server/server.js
 ```
