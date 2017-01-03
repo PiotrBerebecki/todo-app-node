@@ -15,6 +15,10 @@ Fetch one todo in json format based on id: https://afternoon-plateau-33516.herok
 * body-parser - Node.js body parsing middleware
 * Postman
 * Robomongo
+* Mocha
+* Expect
+* Supertest - HTTP assertions
+* Heroku
 
 ## Getting started
 

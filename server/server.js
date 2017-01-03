@@ -36,8 +36,8 @@ app.post('/todos', (req, res) => {
 app.get('/todos', (req, res) => {
   Todo.find().then(todos => {
     
-    // Don't do: res.send(todos) as you will get an array
-    // and you can't attach any additional data if you want.
+    // If you do: res.send(todos) you will get an array
+    // and you won't be able to attach any additional data.
     // Instead create an object
     res.send({todos});
   }, err => {
@@ -58,12 +58,10 @@ app.get('/todos/:id', (req, res) => {
     if (!todo) {
       return res.status(404).send();
     }
-    // send it as object so that we can 
-    // attach other info if desired
+
     res.send({todo});
   }).catch(err => res.status(400).send());
 });
-
 
 
 app.delete('/todos/:id', (req, res) => {
