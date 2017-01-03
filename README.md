@@ -19,6 +19,7 @@ Fetch one todo in json format based on id: https://afternoon-plateau-33516.herok
 * Expect
 * Supertest - HTTP assertions
 * Heroku
+* Validator - Email address validation
 
 ## Getting started
 

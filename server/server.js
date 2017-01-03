@@ -16,6 +16,7 @@ const port = process.env.PORT;
 // thanks to this we can send json to our Express app
 app.use(bodyParser.json());
 
+
 app.post('/todos', (req, res) => {
   // create an instance of a mongoose model
   var todo = new Todo({
@@ -103,6 +104,23 @@ app.patch('/todos/:id', (req, res) => {
     
     res.send({todo});
   }).catch(err => res.status(400).send());
+});
+
+
+app.post('/users', (req, res) => {
+  var body = _.pick(req.body, ['email', 'password']);
+  
+  // var user = new User({
+  //   email: body.email,
+  //   password: body.password,
+  // });
+  
+  // Instead of the aboe we can just:
+  var user = new User(body);
+  
+  user.save().then(user => {
+    res.send(user);
+  }).catch(err => res.status(400).send(err));
 });
 
 
