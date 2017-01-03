@@ -1,6 +1,6 @@
 # Todo App - Node
 
-Rest API todo app
+Rest API todo app with user authentication.
 
 Fetch all todos in json format: https://afternoon-plateau-33516.herokuapp.com/todos
 
@@ -20,6 +20,7 @@ Fetch one todo in json format based on id: https://afternoon-plateau-33516.herok
 * Supertest - HTTP assertions
 * Heroku
 * Validator - Email address validation
+* jsonwebtoken - JWT
 
 ## Getting started
 
