@@ -18,10 +18,11 @@ const port = process.env.PORT;
 app.use(bodyParser.json());
 
 
-app.post('/todos', (req, res) => {
+app.post('/todos', authenticate, (req, res) => {
   // create an instance of a mongoose model
   var todo = new Todo({
-    text: req.body.text
+    text: req.body.text,
+    _creator: req.user._id
   });
   
   todo.save().then(doc => {
@@ -35,9 +36,10 @@ app.post('/todos', (req, res) => {
 });
 
 
-app.get('/todos', (req, res) => {
-  Todo.find().then(todos => {
-    
+app.get('/todos', authenticate, (req, res) => {
+  Todo.find({
+    _creator: req.user._id
+  }).then(todos => {
     // If you do: res.send(todos) you will get an array
     // and you won't be able to attach any additional data.
     // Instead create an object
