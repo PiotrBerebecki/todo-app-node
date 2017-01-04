@@ -1,12 +1,26 @@
 var env = process.env.NODE_ENV || 'development';
 
-// This does not affect heroku and env will be 'production'
-if (env === 'development') {
-  process.env.PORT = 3000;
-  process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoApp';
-} else if (env === 'test') {
-  process.env.PORT = 3000;
-  // different database to prevent
-  // clearing the actual database
-  process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoAppTest';
+
+if (env == 'development' || env == 'test') {
+  // if you require json, it will be automatically
+  // parsed to JS object
+  var config = require('./config.json');
+  var envConfig = config[env];
+  
+  Object.keys(envConfig).forEach(key => {
+    process.env[key] = envConfig[key];
+  });
 }
+
+
+// the config.json file is gitignored, but it looks like this:
+// {
+//   "test": {
+//     "port": 3000,
+//     "MONGODB_URI": "mongodb://localhost:27017/TodoApp"
+//   },
+//   "development": {
+//     "port": 3000,
+//     "MONGODB_URI": "mongodb://localhost:27017/TodoApp"
+//   }
+// }
