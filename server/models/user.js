@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 
+
 var UserSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -33,12 +34,14 @@ var UserSchema = new mongoose.Schema({
   }]
 });
 
+
 UserSchema.methods.toJSON = function () {
   var user = this;
   var userObject = user.toObject();
 
   return _.pick(userObject, ['_id', 'email']);
 };
+
 
 UserSchema.methods.generateAuthToken = function () {
   var user = this;
@@ -51,6 +54,20 @@ UserSchema.methods.generateAuthToken = function () {
     return token;
   });
 };
+
+
+UserSchema.methods.removeToken = function (token) {
+  var user = this;
+  
+  // mongoose $pull method pulls a given 
+  // element from an array
+  return user.update({
+    $pull: {
+      tokens: {token}
+    }
+  });
+};
+
 
 UserSchema.statics.findByToken = function (token) {
   var User = this;
