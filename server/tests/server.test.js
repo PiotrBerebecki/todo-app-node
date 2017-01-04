@@ -56,8 +56,7 @@ describe('POST /todos', () => {
           done();
         }).catch(err => done());
       });
-  });
-  
+  });  
 });
 
 
@@ -115,8 +114,7 @@ describe('GET /todos/:id', () => {
       .set('x-auth', users[0].tokens[0].token)
       .expect(404)
       .end(done);
-  });
-  
+  }); 
 });
 
 
@@ -183,7 +181,6 @@ describe('DELETE /todos/:id', () => {
       .expect(404)
       .end(done);
   });
-  
 });
 
 
@@ -233,8 +230,6 @@ describe('PATCH /todos/:id', () => {
       })
       .end(done);
   });
-  
-
 });
 
 
@@ -262,7 +257,6 @@ describe('GET /users/me', () => {
       })
       .end(done);
   });
-  
 });
 
 
@@ -388,6 +382,5 @@ describe('DELETE /users/me/token', () => {
           done();
         }).catch((e) => done(e));
       });
-  });
-  
+  }); 
 });

@@ -17,10 +17,13 @@ if (env == 'development' || env == 'test') {
 // {
 //   "test": {
 //     "port": 3000,
-//     "MONGODB_URI": "mongodb://localhost:27017/TodoApp"
+//     "MONGODB_URI": "mongodb://localhost:27017/TodoApp",
+//     "JWT_SECRET": "fophpnconocrepo8548534"
 //   },
 //   "development": {
 //     "port": 3000,
-//     "MONGODB_URI": "mongodb://localhost:27017/TodoApp"
+//     "MONGODB_URI": "mongodb://localhost:27017/TodoApp",
+//     "JWT_SECRET": "fiospfiopfjiwimweiop39"
 //   }
 // }
+
