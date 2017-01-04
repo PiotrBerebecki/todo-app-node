@@ -132,7 +132,6 @@ app.get('/users/me', authenticate, (req, res) => {
 });
 
 
-
 app.post('/users/login', (req, res) => {
   var body = _.pick(req.body, ['email', 'password']);
   
