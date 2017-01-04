@@ -4,24 +4,11 @@ const {ObjectID} = require('mongodb');
 
 const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
+const {todos, populateTodos, users, populateUsers } = require('./seed/seed');
 
 
-// Add some seed data for tests, default completed is false
-const todosExample = [
-  {_id: new ObjectID(), 
-   text: 'First test todo'},
-  {_id: new ObjectID(), 
-    text: 'Second test todo', 
-    completed: true, 
-    completedAd: 333}
-];
-
-
-beforeEach(done => {
-  Todo.remove({}).then(() => {
-    return Todo.insertMany(todosExample);
-  }).then(() => done());
-});
+beforeEach(populateUsers);
+beforeEach(populateTodos);
 
 
 describe('POST /todos', () => {
@@ -88,10 +75,10 @@ describe('GET /todos/:id', () => {
     
   it('should get todo doc based on id', done => {
     request(app)
-      .get(`/todos/${todosExample[0]._id.toHexString()}`)
+      .get(`/todos/${todos[0]._id.toHexString()}`)
       .expect(200)
       .expect(res => {
-        expect(res.body.todo.text).toBe(todosExample[0].text);
+        expect(res.body.todo.text).toBe(todos[0].text);
       })
       .end(done);
   });
@@ -120,7 +107,7 @@ describe('GET /todos/:id', () => {
 describe('DELETE /todos/:id', () => {
   
   it('delete todo doc based on id', done => {
-    var idToDelete = todosExample[0]._id.toHexString();
+    var idToDelete = todos[0]._id.toHexString();
     
     request(app)
       .delete(`/todos/${idToDelete}`)
@@ -164,7 +151,7 @@ describe('DELETE /todos/:id', () => {
 describe('PATCH /todos/:id', () => {
   
   it('update completed status to true', done => {
-    var idToUpdate = todosExample[0]._id.toHexString();
+    var idToUpdate = todos[0]._id.toHexString();
     
     request(app)
       .patch(`/todos/${idToUpdate}`)
@@ -180,7 +167,7 @@ describe('PATCH /todos/:id', () => {
   
   
   it('update completed status to false', done => {
-    var idToUpdate = todosExample[1]._id.toHexString();
+    var idToUpdate = todos[1]._id.toHexString();
     
     request(app)
       .patch(`/todos/${idToUpdate}`)
